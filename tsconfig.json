@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "@tsconfig/node20/tsconfig.json"
+  ],
+  "compilerOptions": {
+    /** Treat files as modules even if it doesn't use import/export */
+    "moduleDetection": "force",
+    /** Ignore module structure */
+    "module": "Node16", // default: "preserve"
+    /** Allow JSON modules to be imported */
+    "resolveJsonModule": true,
+    /** Allow JS files to be imported from TS and vice versa */
+    "allowJs": true,
+    /** Use correct ESM import behavior */
+    "esModuleInterop": true,
+    /** Disallow features that require cross-file awareness */
+    "isolatedModules": true,
+    /** JSX settings */
+    // "jsx": "preserve",
+    // "jsxFactory": "React.createElement",
+    // "jsxFragmentFactory": "React.Fragment",
+    // "jsxImportSource": "react"
+    /** custom */
+    "declaration": true,
+    // "noEmit": false,
+    // "emitDeclarationOnly": true,
+    "rootDirs": [
+      "(?:^|/)src/"
+    ],
+    "outDir": "./dist"
+  },
+  "exclude": [
+    "eslint.config.mjs",
+    "prettier.config.mjs"
+  ]
+}
