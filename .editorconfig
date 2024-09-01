@@ -1,0 +1,102 @@
+# Stop the editor from looking for .editorconfig files in the parent directories
+root = true
+
+# NOTE - 'end_of_line' settings should always match with the settings in
+# '.gitattributes', keeping the IDE's and git's parsers in sync.
+# The main caveat is that certain Windows-based file extensions *must* be crlf,
+# which are '*.sln', '*.cmd', and '*.bat', aside from any Powershell files
+# ('*.ps1...'), and everything else can be safely managed with lf EOL's.
+
+[*]
+# Non-configurable Prettier behaviors
+charset = utf-8
+insert_final_newline = true
+# Caveat: Prettier won’t trim trailing whitespace inside template strings,
+# but your editor might.
+trim_trailing_whitespace = true
+
+# Configurable Prettier behaviors
+# (change these if your Prettier config differs)
+end_of_line = lf
+indent_style = space
+indent_size = 2
+max_line_length = 80
+
+# License header
+file_header_template = Copyright (c) Nathan J. Hood.\nLicensed under the MIT License.
+
+## Begin 'strict'
+
+# Windows specific files should retain windows line-endings - see above...
+[*.{sln,[sS][lL][nN]}]
+end_of_line = crlf
+[*.{cmd,[cC][mM][dD]}]
+end_of_line = crlf
+[*.{bat,[bB][aA][tT]}]
+end_of_line = crlf
+[*.{ps1,psm1}]
+end_of_line = crlf
+
+# strict Xml project files
+[*.{csproj,vbproj,vcxproj,vcxproj.filters,vcxitems,vcxitems.filters,proj,nativeproj,locproj,njsproj}]
+indent_size = 2
+end_of_line = crlf
+
+# strict Xml files with utf-8
+[*.{csproj,vbproj,proj,nativeproj,locproj}]
+charset = utf-8
+
+# strict Xml build files
+[*.builds]
+indent_size = 2
+
+# strict Xml files
+[*.{xml,stylecop,resx,ruleset}]
+indent_size = 2
+
+# strict Xml config files
+[*.{msbuild,props,targets,config,nuspec}]
+indent_size = 2
+end_of_line = crlf
+
+# strict YAML
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+# strict Markdown
+[*.{md,rmd,mkd,mkdn,mdwn,mdown,markdown,litcoffee}]
+indent_style = space
+trim_trailing_whitespace = false
+tab_width = 4
+
+# strict Makefile
+[{Makefile,*.mak}]
+indent_style = tab
+
+# strict phython
+[*.py]
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+max_line_length = 80
+
+# strict C#
+[*.cs]
+indent_style = space
+indent_size = 4
+
+# strict Shellscript
+[*.sh]
+end_of_line = lf
+
+## End 'strict'
+
+## Begin 'styled'
+
+# styled CMake
+[{CMakeLists.txt,*.cmake}]
+indent_size = 4
+indent_style = space
+
+## End 'styled'
