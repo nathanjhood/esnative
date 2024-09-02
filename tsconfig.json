@@ -31,6 +31,10 @@
   },
   "exclude": [
     "eslint.config.mjs",
-    "prettier.config.mjs"
+    "prettier.config.mjs",
+    "(?:^|/)packages/",
+    "(?:^|/)build/",
+    "(?:^|/)dist/",
+    "(?:^|/)node_modules/"
   ]
 }
