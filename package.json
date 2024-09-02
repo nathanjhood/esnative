@@ -5,45 +5,45 @@
   "packageManager": "yarn@1.22.22",
   "scripts": {
 
-    "build": "tsc --noEmit && pkgroll --build",
-    "dev": "tsx ./src/cli.ts",
-    "start": "node ./dist/cli.mjs",
+    "start":              "node ./dist/cli.mjs",
+    "dev":                "tsx ./src/cli.ts",
+    "build":              "tsc --noEmit && cmake-js --build && pkgroll --build",
 
-    "pkg:build": "pkgroll --build",
-    "pkg:minify": "pkgroll --minify",
-    "pkg:sourcemap": "pkgroll --sourcemap",
-    "pkg:watch": "pkgroll --watch",
-    "pkg:clean": "pkgroll --clean-dist",
+    "pkg:build":          "pkgroll --build",
+    "pkg:minify":         "pkgroll --minify",
+    "pkg:sourcemap":      "pkgroll --sourcemap",
+    "pkg:watch":          "pkgroll --watch",
+    "pkg:clean":          "pkgroll --clean-dist",
 
-    "tsc:check": "tsc --noEmit",
+    "tsc:check":          "tsc --noEmit",
 
-    "cmake:install":     "cmake-js install",
-    "cmake:postinstall": "cmake-js compile",
-    "cmake:configure":   "cmake-js configure",
-    "cmake:reconfigure": "cmake-js reconfigure",
-    "cmake:build":       "cmake-js build",
-    "cmake:rebuild":     "cmake-js rebuild",
-    "cmake:clean":       "cmake-js clean",
-    "cmake:wipe":        "cmake-js clean && rm -rvf ./node_modules",
+    "cmake:install":      "cmake-js install",
+    "cmake:postinstall":  "cmake-js compile",
+    "cmake:configure":    "cmake-js configure",
+    "cmake:reconfigure":  "cmake-js reconfigure",
+    "cmake:build":        "cmake-js build",
+    "cmake:rebuild":      "cmake-js rebuild",
+    "cmake:clean":        "cmake-js clean",
+    "cmake:wipe":         "cmake-js clean && rm -rvf ./node_modules",
 
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint":               "eslint .",
+    "lint:fix":           "eslint . --fix",
 
-    "format": "prettier --check ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./prettier.config.mjs",
-    "format:fix": "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./prettier.config.mjs"
+    "format":             "prettier --check ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./prettier.config.mjs",
+    "format:fix":         "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./prettier.config.mjs"
   },
-  "bin": "./dist/cli.mjs",
-  "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.cts",
+  "bin":          "./dist/cli.mjs",
+  "main":         "./dist/index.cjs",
+  "module":       "./dist/index.mjs",
+  "types":        "./dist/index.d.cts",
   "exports": {
     "require": {
-      "types": "./dist/index.d.cts",
-      "default": "./dist/index.cjs"
+      "types":    "./dist/index.d.cts",
+      "default":  "./dist/index.cjs"
     },
     "import": {
-      "types": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
+      "types":    "./dist/index.d.mts",
+      "default":  "./dist/index.mjs"
     }
   },
   "devDependencies": {
