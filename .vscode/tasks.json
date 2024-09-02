@@ -44,13 +44,6 @@
       "problemMatcher": [],
       "detail": "CMake template install task"
     },
-    // {
-    //   "type": "cmake",
-    //   "label": "CMake: package",
-    //   "command": "package",
-    //   "problemMatcher": [],
-    //   "detail": "CMake template package task"
-    // },
     {
       "type": "cmake",
       "label": "CMake: test",

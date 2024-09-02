@@ -56,13 +56,16 @@ export function handleProcessConfig(config: NodeJS.ProcessConfig) {
 }
 
 export function handleProcess(process: NodeJS.Process) {
-  console.info({
-    title: process.title,
-    version: process.version,
-    pid: process.pid,
-    platform: process.platform,
-    arch: process.arch,
-    config: process.config,
-  });
+  const addon: typeof import('./lib/addon.node') = require('./lib/addon.node');
+  console.info(addon.hello());
+  console.info('Node Addon API version:', addon.version());
+  // console.info({
+  //   title: process.title,
+  //   version: process.version,
+  //   pid: process.pid,
+  //   platform: process.platform,
+  //   arch: process.arch,
+  //   config: process.config,
+  // });
   return;
 }

@@ -6,6 +6,6 @@ include(CMakeJS)
 
 cmakejs_create_napi_addon(
     addon
-    src/addon.cpp
+    src/lib/addon.cpp
     NAMESPACE ESNATIVE
 )
