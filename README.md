@@ -47,6 +47,7 @@ Done in <time>s.
   - [Quickstart](#quickstart)
   - [Contents](#contents)
   - [Motivations](#motivations)
+  - [Commands](#commands)
   - [Notes](#notes)
 ---
 
@@ -66,7 +67,7 @@ In short, I'm trying to make the commands shown below a repeatable, accessible e
 
 ## Commands
 
-```json
+```jsonc
 {
     /** 'PUBLIC' COMMANDS INTENDED FOR CONSUMERS OF THE TEST MODULE */
 
