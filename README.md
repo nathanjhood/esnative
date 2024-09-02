@@ -41,6 +41,8 @@ Node Addon API 8
 Done in <time>s.
 ```
 
+---
+
 ## Contents
 
 - [esnative](#esnative)
@@ -49,6 +51,8 @@ Done in <time>s.
   - [Motivations](#motivations)
   - [Commands](#commands)
   - [Notes](#notes)
+---
+
 ---
 
 ## Motivations
@@ -64,6 +68,8 @@ This repository currently represents a project template. Once built (see [Quicks
 The particularly interesting part of this project, is using NodeJS as an *entry point* to system-level languages and their paradigms. Usually, in system-application development, a `main()` function is written in the lower-level language and defines what the application should *do* when it is executed. The `main()` call is necessarily compiled-in to the binary, and thus any changes by the developer (such as bug fixes, enhancements, etc) require re-configuring and rebuilding. In the case of a Node Addon, our application entrypoint is written in ECMAscript languages like `Javascript` and `Typescript`; of which, even the latter now offers near-instant transpilation times, and much more rapid iteration over development cycles in comparison to native coding languages.
 
 In short, I'm trying to make the commands shown below a repeatable, accessible entry point for new project templates:
+
+---
 
 ## Commands
 
@@ -107,17 +113,19 @@ In short, I'm trying to make the commands shown below a repeatable, accessible e
 },
 ```
 
+The template *should* build and run successfully using the commands above (and/or the others in `package.json`). The built project, and commands above which interact with it, represent what I intend for this project to *facilitate* for others to do with it, eventually.
+
+If these early concepts pass the validation stage, then the template project will be moved into a sub-directory (probably `/packages/template`), and the main codebase of `esnative` shall take the form of the required tooling for scaffolding and developing new projects which resemble the template; think of a command like `npx create-native-app@latest myApp --template typescript`...
+
+---
+
 ## Notes
 
-This project uses [my personal fork of cmake-js](https://github.com/nathanjhood/cmake-js#cmakejs_cmake_api); I drafted an API to provide the CMake side of consuming projects with some wrapper functions. See my `CMakeLists.txt` for an example of how the `.node` binary creation is configured; more documentation is available in the forked repo.
+This project uses [my fork of cmake-js](https://github.com/nathanjhood/cmake-js#cmakejs_cmake_api); I drafted an API to provide the CMake side of consuming projects with some wrapper functions, based on some of my general requirements. See my `CMakeLists.txt` for an example of how the `.node` binary creation is configured; more documentation is available in the forked repo.
 
 Both `Node-API` and cmake-js offer an unshakeable level of compatibility; try building the test project against a variety of NodeJS versions using `nvm`, and note how cmake-js automatically fetches the matching set of headers and other developer files for that NodeJS version. `Node-API`'s well-documented ABI stability further guarantees that the resulting binary is widely stable across NodeJs versions, system platforms and architectures, and so forth.
 
-Further useful functionality is particularly inspired by `tsx` and `pkgroll`, both seperately, and together as a one-fits-all solution for creating modern ECMA bundles. They both offer some great features that are worth looking at closer, if you're hacking on this project.
-
-It is, theoretically, possible to execute the built binaries on remote servers. In order to do so, it would likely be necessary/easiest to compile the binaries and run the packaging steps in a container or virtual machine, against an image that matches your deployment platform. Many commercial web hosting platforms provide official images for purposes just like this, while others rely on widely-available base images that can be looked up. Remote execution is a questionable - and often, highly expensive - feature to implement; however, Edge computing and other new, scalable technologies present interesting possibilities. Consider with caution; deploying the souce code and building remotely is *strongly* discouraged. Please examine my `cmake-js` fork for clear instructions for packaging the binaries using the awesome power and flexibility of `CPack` - including, building your own installers and bootstrappers. NodeJS SEAConfig (single-entry applications that run in an isolated NodeJS instance) offers another, highly interesting area with exploring.
-
-The template *should* build and run successfully using the commands above (and/or the others in `package.json`). The built project, and commands above which interact with it, represent what I intend for this project to *facilitate* for others to do with it, eventually. If these early concepts pass the validation stage, then the template project will be moved into a sub-directory (probably `/packages/template`), and the main codebase of `esnative` shall take the form of the required tooling for scaffolding and developing new projects which resemble the template; think of a command like `npx create-native-app@latest myApp --template typescript`...
+The additional functionalities of `tsx` and `pkgroll`, both seperately, and together,  are worth looking at closer, if you're hacking on this project. They provided the impetus that inspired the creation of the `esnative` project. The combined workflows of `tsx` and `pkgroll` alongside `cmake-js` in the creation of `Node-API` modules feels smooth, fast, and lightweight; no particular library or framework is required, other than NodeJS and it's `Node-API` and your native compiler toolchain (GCC/MSVC/xCode/LLVM, etc...).
 
 I expect to experiment with some front-end libraries and frameworks in addition to the current template; if, and once, the two are integrating with absolute ease, this project will likely change form as proposed.
 
