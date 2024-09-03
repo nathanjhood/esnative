@@ -1,3 +1,13 @@
+const addon: typeof import('./lib/addon.node') = require('./lib/addon.node');
+
+export type Json =
+  | string
+  | number
+  | boolean
+  | { [key: string]: Json | undefined }
+  | Json[]
+  | null
+
 export function handleError(error: any) {
   // validation
   if (!(error instanceof Error)) {
@@ -56,16 +66,22 @@ export function handleProcessConfig(config: NodeJS.ProcessConfig) {
 }
 
 export function handleProcess(process: NodeJS.Process) {
-  const addon: typeof import('./lib/addon.node') = require('./lib/addon.node');
+
+
   console.info(addon.hello());
-  console.info('Node Addon API version:', addon.version());
-  // console.info({
-  //   title: process.title,
-  //   version: process.version,
-  //   pid: process.pid,
-  //   platform: process.platform,
-  //   arch: process.arch,
-  //   config: process.config,
-  // });
+  console.info(addon.version());
+  console.info(addon.global());
+  console.info(addon.undefined());
+  console.info(addon.null());
+  console.info(addon.getNapiVersion());
+  console.info(addon.getNodeVersion());
+  console.info({
+    title: process.title,
+    version: process.version,
+    pid: process.pid,
+    platform: process.platform,
+    arch: process.arch,
+    // config: process.config,
+  });
   return;
 }

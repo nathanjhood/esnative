@@ -2,20 +2,21 @@
 // Project: [~THE PROJECT NAME~]
 // Definitions by: [~YOUR NAME~] <[~A URL FOR YOU~]>
 
-/*~ If this module is a UMD module that exposes a global variable 'myLib' when
- *~ loaded outside a module loader environment, declare that global here.
- *~ Otherwise, delete this declaration.
- */
-export as namespace myLib;
+export as namespace EsNative;
 
-/*~ If this module exports functions, declare them like so.
- */
+export type Json =
+  | string
+  | number
+  | boolean
+  | { [key: string]: Json | undefined }
+  | Json[]
+  | null
 
 /**
  *
  * @param {any} error The error to handle
  */
-export function handleError(error: any);
+export declare function handleError(error: any);
 
 /**
  *
@@ -33,38 +34,28 @@ export declare function handleRejection(reason?: any);
  *
  * @param {NodeJS.Architecture} arch The architecture to handle
  */
-export function handleArchitecture(arch: NodeJS.Architecture);
+export declare function handleArchitecture(arch: NodeJS.Architecture);
 
 /**
  *
  * @param {NodeJS.Platform} platform The platform to handle
  */
-export function handlePlatform(platform: NodeJS.Platform);
+export declare function handlePlatform(platform: NodeJS.Platform);
 
 /**
  *
  * @param {NodeJS.ProcessEnv} env The env to handle
  */
-export function handleProcessEnv(env: NodeJS.ProcessEnv);
+export declare function handleProcessEnv(env: NodeJS.ProcessEnv);
 
 /**
  *
  * @param {NodeJS.ProcessConfig} config The config to handle
  */
-export function handleProcessConfig(config: NodeJS.ProcessConfig);
+export declare function handleProcessConfig(config: NodeJS.ProcessConfig);
 
 /**
  *
  * @param {NodeJS.process} process The process to handle
  */
-export function handleProcess(process: NodeJS.Process);
-
-/*~ You can declare types that are available via importing the module */
-export interface SomeType {
-  name: string;
-  length: number;
-  extras?: string[];
-}
-
-/*~ You can declare properties of the module using const, let, or var */
-export const myField: number;
+export declare function handleProcess(process: NodeJS.Process);
