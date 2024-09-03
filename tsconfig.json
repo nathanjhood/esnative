@@ -6,7 +6,7 @@
     /** Treat files as modules even if it doesn't use import/export */
     "moduleDetection": "force",
     /** Ignore module structure */
-    "module": "Node16", // default: "preserve"
+    "module": "Preserve", // default: "preserve"
     /** Allow JSON modules to be imported */
     "resolveJsonModule": true,
     /** Allow JS files to be imported from TS and vice versa */
@@ -27,14 +27,15 @@
     "rootDirs": [
       "(?:^|/)src/"
     ],
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "moduleResolution": "Bundler"
   },
   "exclude": [
     "eslint.config.mjs",
     "prettier.config.mjs",
-    "(?:^|/)packages/",
-    "(?:^|/)build/",
-    "(?:^|/)dist/",
-    "(?:^|/)node_modules/"
+    "./packages/",
+    "./build/",
+    "./dist/",
+    "./node_modules/"
   ]
 }
