@@ -1,5 +1,13 @@
 /// <reference types="node" />
 
+export type Json =
+  | string
+  | number
+  | boolean
+  | { [key: string]: Json | undefined }
+  | Json[]
+  | null
+
 declare namespace NodeJS {
   interface ProcessEnv {
     readonly NODE_ENV: "development" | "production" | "test";

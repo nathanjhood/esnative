@@ -5,9 +5,18 @@
   "packageManager": "yarn@1.22.22",
   "scripts": {
 
-    "start":              "node ./dist/cli.mjs",
-    "dev":                "tsx ./src/cli.ts",
+    "start":              "node ./dist/bin/cli.mjs",
+    "dev":                "tsx ./src/bin/cli.ts",
     "build":              "tsc --noEmit && cmake-js --build && pkgroll --build",
+    "test":               "tsx --test",
+
+    "ts:dbg":             "tsx inspect ./src/bin/cli.ts",
+    "ts:test":            "tsx --test **/*.test.ts",
+    "ts:watch":           "tsx --watch",
+
+    "js:dbg":             "tsx inspect ./src/bin/cli.ts",
+    "js:test":            "node --test \"**/*.test.js\" \"**/*.spec.js\" ",
+    "js:watch":           "node --watch",
 
     "pkg:build":          "pkgroll --build",
     "pkg:minify":         "pkgroll --minify",
@@ -32,7 +41,7 @@
     "format":             "prettier --check ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./prettier.config.mjs",
     "format:fix":         "prettier --write ./**/*.{js,jsx,ts,tsx,css,md,json} --config ./prettier.config.mjs"
   },
-  "bin":          "./dist/cli.mjs",
+  "bin":          "./dist/bin/cli.mjs",
   "main":         "./dist/index.cjs",
   "module":       "./dist/index.mjs",
   "types":        "./dist/index.d.cts",

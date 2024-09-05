@@ -6,8 +6,10 @@ project(ESNATIVE)
 
 include(CMakeJS)
 
+configure_file("include/addon/addon.hpp" "include/addon/addon.hpp")
+
 cmakejs_create_napi_addon(
     addon
-    src/lib/addon.cpp
+    src/addon/addon.cpp include/addon/addon.hpp
     NAMESPACE ESNATIVE
 )

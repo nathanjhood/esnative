@@ -1,14 +1,6 @@
-const addon: typeof import('./lib/addon.node') = require('./lib/addon.node');
+const addon: typeof import('./addon/addon.node') = require('./lib/addon.node');
 
-export type Json =
-  | string
-  | number
-  | boolean
-  | { [key: string]: Json | undefined }
-  | Json[]
-  | null
-
-export function handleError(error: any) {
+function handleError(error: any) {
   // validation
   if (!(error instanceof Error)) {
     console.error(
@@ -21,7 +13,7 @@ export function handleError(error: any) {
   return;
 }
 
-export function handleWarning(warning: any) {
+function handleWarning(warning: any) {
   // validation
   if (!(warning instanceof Error)) {
     console.error(
@@ -35,7 +27,7 @@ export function handleWarning(warning: any) {
   return;
 }
 
-export function handleRejection(reason?: any) {
+function handleRejection(reason?: any) {
   if (reason) {
     console.error(reason);
   } else {
@@ -45,22 +37,22 @@ export function handleRejection(reason?: any) {
   process.exit(1);
 }
 
-export function handleArchitecture(arch: NodeJS.Architecture) {
+function handleArchitecture(arch: NodeJS.Architecture) {
   console.info(arch);
   return;
 }
 
-export function handlePlatform(platform: NodeJS.Platform) {
+function handlePlatform(platform: NodeJS.Platform) {
   console.info(platform);
   return;
 }
 
-export function handleProcessEnv(env: NodeJS.ProcessEnv) {
+function handleProcessEnv(env: NodeJS.ProcessEnv) {
   console.info(env);
   return;
 }
 
-export function handleProcessConfig(config: NodeJS.ProcessConfig) {
+function handleProcessConfig(config: NodeJS.ProcessConfig) {
   console.info(config);
   return;
 }
@@ -68,20 +60,21 @@ export function handleProcessConfig(config: NodeJS.ProcessConfig) {
 export function handleProcess(process: NodeJS.Process) {
 
 
-  console.info(addon.hello());
-  console.info(addon.version());
-  console.info(addon.global());
-  console.info(addon.undefined());
-  console.info(addon.null());
-  console.info(addon.getNapiVersion());
-  console.info(addon.getNodeVersion());
-  console.info({
-    title: process.title,
-    version: process.version,
-    pid: process.pid,
-    platform: process.platform,
-    arch: process.arch,
-    // config: process.config,
-  });
+  // console.info(addon.hello());
+  // console.info(addon.version());
+  // console.info(addon.global());
+  // console.info(addon.undefined());
+  // console.info(addon.null());
+  console.info("N-Api version:", addon.getNapiVersion());
+  console.info("NodeJS version:", addon.getNodeVersion());
+  // console.info({
+  //   title: process.title,
+  //   version: process.version,
+  //   pid: process.pid,
+  //   platform: process.platform,
+  //   arch: process.arch,
+  //   config: process.config,
+  // });
+  // console.log(addon.parseArgs({}, true, "plums", 3.145))
   return;
 }

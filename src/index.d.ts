@@ -4,13 +4,7 @@
 
 export as namespace EsNative;
 
-export type Json =
-  | string
-  | number
-  | boolean
-  | { [key: string]: Json | undefined }
-  | Json[]
-  | null
+export declare const addon: import('./addon/addon.node');
 
 /**
  *

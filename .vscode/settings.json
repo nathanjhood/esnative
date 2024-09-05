@@ -66,12 +66,14 @@
     "typescriptreact"
   ],
   "files.associations": {
+    "**.d.ts": "typescript",
+    "*.css": "tailwindcss",
+    "**.bash**": "shellscript",
+    "**.cmake": "cmake",
+    ".editorconfig": "editorconfig",
     "**.{js,cjs,mjs}.map": "javascript",
     "tsconfig.*.json": "jsonc",
-    ".editorconfig": "editorconfig",
     ".env.*": "properties",
-    "**.cmake": "cmake",
-    "**.d.ts": "typescript",
     "**.d.cts": "typescript",
     "**.d.mts": "typescript",
     "**.jsx": "javascriptreact",
