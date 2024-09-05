@@ -8,3 +8,8 @@ node_modules/
 build/
 dist/
 out/
+bin/
+lib/
+*.node
+*.exe
+*.log
