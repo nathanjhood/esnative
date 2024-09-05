@@ -1,6 +1,6 @@
 import * as test from 'node:test';
 
-const testName = 'addon';
+const testName = 'index';
 const testController = new AbortController();
 const testOptions = {
   signal: testController.signal,

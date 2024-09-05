@@ -3,19 +3,13 @@
  * @brief A quick 'hello world' Napi Addon in C++
  */
 
+
 // Required header and C++ flag
 #if __has_include(<napi.h>) && BUILDING_NODE_EXTENSION
 
 #include <napi.h>
 
-#include <iostream>
-
-#ifndef STRINGIFY
-#define STRINGIFY_HELPER(n) #n
-#define STRINGIFY(n) STRINGIFY_HELPER(n)
-#endif
-
-#include "addon/addon.hpp"
+#include "addon.hpp"
 
 namespace Napi {
 namespace NAPI_CPP_CUSTOM_NAMESPACE {
@@ -82,10 +76,8 @@ Value Null(const CallbackInfo &callbackInfo) {
   const auto &env = callbackInfo.Env();
   return env.Null();
 }
-
-
-const auto &initialize = [](Napi::Env env, Napi::Object exports) {
-  using namespace Napi;
+const auto &initialize = [](Env env, Object exports) {
+  // using namespace Napi;
 
   exports.Set(                            //
       String::New(env, "hello"),          //
@@ -122,24 +114,19 @@ const auto &initialize = [](Napi::Env env, Napi::Object exports) {
       Function::New<Null>(env)           //
   );
 
-
   const bool isFrozen = exports.Freeze();
 
   return exports;
 };
 
-// Register a new addon with the intializer function defined above
+/**
+ * Register a new addon with the intializer function defined above
+ */
 NODE_API_MODULE(CMAKEJS_ADDON_NAME, initialize)
 
 } // namespace NAPI_CPP_CUSTOM_NAMESPACE
 } // namespace Napi
 
-// Export your custom namespace to outside of the Napi namespace, providing an
-// alias to the Napi Addon API; e.g., '<vendor>::<addon>::Object()', along with
-// the functions defined above, such as '<vendor>::<addon>::Hello()'.
-namespace NAPI_CPP_CUSTOM_NAMESPACE::CMAKEJS_ADDON_NAME {
-using namespace Napi::NAPI_CPP_CUSTOM_NAMESPACE;
-}
 
 #else // !__has_include(<napi.h>) || !BUILDING_NODE_EXTENSION
 #warning                                                                       \

@@ -16,21 +16,30 @@
 namespace Napi {
 namespace NAPI_CPP_CUSTOM_NAMESPACE {
 
-Napi::Value Hello(const Napi::CallbackInfo &info);
-
-Napi::Value Version(const Napi::CallbackInfo &info);
-
-Napi::Object Init(Napi::Env env, Napi::Object exports);
+Value Hello(const CallbackInfo& callbackInfo);
+Value Version(const CallbackInfo& callbackInfo);
+Value GetNapiVersion(const CallbackInfo& callbackInfo);
+Value GetNodeVersion(const CallbackInfo& callbackInfo);
 
 } // namespace NAPI_CPP_CUSTOM_NAMESPACE
 } // namespace Napi
 
-// Export your custom namespace to outside of the Napi namespace, providing an
-// alias to the Napi Addon API; e.g., '<vendor>::<addon>::Object()', along with
-// the functions defined above, such as '<vendor>::<addon>::Hello()'.
 namespace NAPI_CPP_CUSTOM_NAMESPACE::CMAKEJS_ADDON_NAME {
 using namespace Napi::NAPI_CPP_CUSTOM_NAMESPACE;
+/**
+ * This code block exports your custom namespace to outside of the N-Api
+ * namespace, providing an alias to the Node Addon API.
+ *
+ * e.g.:
+ *
+ * '<vendor>::<addon>::Object()',
+ *
+ * ...along with the functions defined in the addon itself, such as:
+ *
+ * '<vendor>::<addon>::Hello()'.
+ */
 }
+
 
 #else // !__has_include(<napi.h>) || !BUILDING_NODE_EXTENSION
 #warning                                                                       \
